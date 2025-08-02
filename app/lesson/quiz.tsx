@@ -190,12 +190,12 @@ export const Quiz = ({
                         <ResultCard
                         variant="points"
                         value={challenges.length * 10}
-                        hasActiveSubscription={!userSubscription?.isActive}
+                        hasActiveSubscription={!!userSubscription?.isActive}
                         />
                         <ResultCard
                         variant="hearts"
                         value={hearts}
-                        hasActiveSubscription={!userSubscription?.isActive}
+                        hasActiveSubscription={!!userSubscription?.isActive}
                         />
                     </div>
                 </div>

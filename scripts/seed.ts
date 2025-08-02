@@ -18,6 +18,7 @@ const main = async () => {
         await db.delete(schema.challenges);
         await db.delete(schema.challengeOptions);
         await db.delete(schema.challengeProgress);
+        await db.delete(schema.userSubscription);
 
         await db.insert(schema.courses).values([
             {
@@ -116,6 +117,7 @@ const main = async () => {
 
         await db.insert(schema.challengeOptions).values([
             {
+                id: 1,
                 challengeId: 1,
                 imageSrc: "/man.png",
                 correct: true,
@@ -123,6 +125,7 @@ const main = async () => {
                 audioSrc: "/es_man.mp3"
             },
             {
+                id: 2,
                 challengeId: 1,
                 imageSrc: "/woman.png",
                 correct: false,
@@ -130,6 +133,7 @@ const main = async () => {
                 audioSrc: "/es_woman.mp3"
             },
             {
+                id: 3,
                 challengeId: 1,
                 imageSrc: "/robot.png",
                 correct: false,
@@ -140,18 +144,21 @@ const main = async () => {
 
         await db.insert(schema.challengeOptions).values([
             {
+                id: 4,
                 challengeId: 2,
                 correct: true,
                 text: "el hombre",
                 audioSrc: "/es_man.mp3"
             },
             {
+                id: 5,
                 challengeId: 2,
                 correct: false,
                 text: "la mujer",
                 audioSrc: "/es_woman.mp3"
             },
             {
+                id: 6,
                 challengeId: 2,
                 correct: false,
                 text: "el robot",
@@ -161,6 +168,7 @@ const main = async () => {
 
         await db.insert(schema.challengeOptions).values([
             {
+                id: 7,
                 challengeId: 3,
                 imageSrc: "/boy.png",
                 correct: false,
@@ -168,6 +176,7 @@ const main = async () => {
                 audioSrc: "/es_boy.mp3"
             },
             {
+                id: 8,
                 challengeId: 3,
                 imageSrc: "/robot.png",
                 correct: true,
@@ -175,6 +184,7 @@ const main = async () => {
                 audioSrc: "/es_robot.mp3"
             },
             {
+                id: 9,
                 challengeId: 3,
                 imageSrc: "/girl.png",
                 correct: false,
