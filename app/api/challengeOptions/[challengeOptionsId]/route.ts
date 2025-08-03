@@ -4,18 +4,25 @@ import { getIsAdmin } from "@/lib/admin"
 import { eq } from "drizzle-orm"
 import { NextResponse } from "next/server"
 
+type RouterType = {
+    params: {
+        challengeOptionsId: number
+    };
+};
+
 export const GET = async (
     req: Request,
-    { params }: { params: { challengeOptionsId: number }
-}) => {
+    { params }: RouterType
+) => {
     const isAdmin = await getIsAdmin();
+    const { challengeOptionsId } = await params;
 
     if (!isAdmin) {
         return new NextResponse("Unauthorized", { status: 401 } );
     }
 
     const data = await db.query.challengeOptions.findFirst({
-        where: eq(challengeOptions.id, params.challengeOptionsId)
+        where: eq(challengeOptions.id, challengeOptionsId)
     });
 
     return NextResponse.json(data);
@@ -23,9 +30,10 @@ export const GET = async (
 
 export const PUT = async (
     req: Request,
-    { params }: { params: { challengeOptionsId: number }
-}) => {
+    { params }: RouterType
+) => {
     const isAdmin = await getIsAdmin();
+    const { challengeOptionsId } = await params;
 
     if (!isAdmin) {
         return new NextResponse("Unauthorized", { status: 401 } );
@@ -36,7 +44,7 @@ export const PUT = async (
     const data = await db.update(challengeOptions).set({
         ...body
     })
-    .where(eq(challengeOptions.id, params.challengeOptionsId))
+    .where(eq(challengeOptions.id, challengeOptionsId))
     .returning();
 
     return NextResponse.json(data[0]);
@@ -44,16 +52,17 @@ export const PUT = async (
 
 export const DELETE = async (
     req: Request,
-    { params }: { params: { challengeOptionsId: number }
-}) => {
+    { params }: RouterType
+) => {
     const isAdmin = await getIsAdmin();
+    const { challengeOptionsId } = await params;
 
     if (!isAdmin) {
         return new NextResponse("Unauthorized", { status: 401 } );
     }
 
     const data = await db.delete(challengeOptions)
-    .where(eq(challengeOptions.id, params.challengeOptionsId))
+    .where(eq(challengeOptions.id, challengeOptionsId))
     .returning();
 
     return NextResponse.json(data[0]);

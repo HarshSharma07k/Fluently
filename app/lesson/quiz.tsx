@@ -41,12 +41,12 @@ export const Quiz = ({
     const router = useRouter();
     const [
         correctAudio,
-        _c,
+        ,
         correctControls
     ] = useAudio({ src: "/correct.wav" });
     const [
         incorrectAudio,
-        _i,
+        ,
         incorrectControls
     ] = useAudio({ src: "/incorrect.wav" });
 

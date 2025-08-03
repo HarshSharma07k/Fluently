@@ -1,4 +1,4 @@
-import { Edit, NumberInput, ReferenceInput, required, SimpleForm, TextInput } from "react-admin";
+import { Edit, NumberInput, ReferenceInput, required, SimpleForm } from "react-admin";
 
 export const LessonEdit = () => {
     return (

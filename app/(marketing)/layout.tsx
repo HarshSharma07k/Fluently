@@ -1,6 +1,5 @@
 import { Footer } from "./footer";
 import { Header } from "./header";
-import { ClerkProvider } from "@clerk/nextjs";
 type Props = {
     children: React.ReactNode;
 };

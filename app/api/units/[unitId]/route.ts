@@ -4,18 +4,25 @@ import { getIsAdmin } from "@/lib/admin"
 import { eq } from "drizzle-orm"
 import { NextResponse } from "next/server"
 
+type RouterType = {
+    params: {
+        unitId: number
+    };
+};
+
 export const GET = async (
     req: Request,
-    { params }: { params: { unitId: number }
-}) => {
+    { params }: RouterType
+) => {
     const isAdmin = await getIsAdmin();
+    const { unitId } = await params;
 
     if (!isAdmin) {
         return new NextResponse("Unauthorized", { status: 401 } );
     }
 
     const data = await db.query.units.findFirst({
-        where: eq(units.id, params.unitId)
+        where: eq(units.id, unitId)
     });
 
     return NextResponse.json(data);
@@ -23,9 +30,10 @@ export const GET = async (
 
 export const PUT = async (
     req: Request,
-    { params }: { params: { unitId: number }
-}) => {
+    { params }: RouterType
+) => {
     const isAdmin = await getIsAdmin();
+    const { unitId } = await params;
 
     if (!isAdmin) {
         return new NextResponse("Unauthorized", { status: 401 } );
@@ -36,7 +44,7 @@ export const PUT = async (
     const data = await db.update(units).set({
         ...body
     })
-    .where(eq(units.id, params.unitId))
+    .where(eq(units.id, unitId))
     .returning();
 
     return NextResponse.json(data[0]);
@@ -44,16 +52,17 @@ export const PUT = async (
 
 export const DELETE = async (
     req: Request,
-    { params }: { params: { unitId: number }
-}) => {
+    { params }: RouterType
+) => {
     const isAdmin = await getIsAdmin();
+    const { unitId } = await params;
 
     if (!isAdmin) {
         return new NextResponse("Unauthorized", { status: 401 } );
     }
 
     const data = await db.delete(units)
-    .where(eq(units.id, params.unitId))
+    .where(eq(units.id, unitId))
     .returning();
 
     return NextResponse.json(data[0]);
