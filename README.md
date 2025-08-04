@@ -1,36 +1,175 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🌍 Fluently — Learn Languages Smarter
 
-## Getting Started
+**Fluently** is a full-featured Duolingo-inspired SaaS platform for interactive language learning. Built with **Next.js 15**, **TypeScript**, **Drizzle ORM**, **Neon DB**, and **Stripe**, it offers an engaging, gamified experience for learners and a scalable architecture for developers.
 
-First, run the development server:
+---
+
+## ✨ Features
+
+- 🎯 **Gamified Learning** — XP, progress tracking, dynamic challenges
+- 🧠 **Smart Lessons** — Lessons adapt to your pace and accuracy
+- 🔐 **Authentication with Clerk** — Modern, secure auth system
+- 💳 **Stripe Integration** — Premium subscriptions, billing, and webhooks
+- 🗃 **Drizzle + Neon** — End-to-end type-safe database with PostgreSQL
+- ⚡ **Blazing Fast UX** — Powered by Next.js App Router and Server Components
+
+---
+
+## 🧰 Tech Stack
+
+| Tool                  | Description                                 |
+|-----------------------|---------------------------------------------|
+| [Next.js 15](https://nextjs.org/)      | App Router, SSR, Server Actions              |
+| [TypeScript](https://www.typescriptlang.org/) | Type safety and robust typing       |
+| [Drizzle ORM](https://orm.drizzle.team/)      | Type-safe SQL ORM for PostgreSQL      |
+| [Neon DB](https://neon.tech/)                 | Serverless Postgres with branching   |
+| [Clerk](https://clerk.dev/)                   | Authentication & user management     |
+| [Stripe](https://stripe.com/)                 | Billing, subscriptions, payments     |
+| [Tailwind CSS](https://tailwindcss.com/)      | Utility-first modern styling         |
+
+---
+
+## 🚀 Getting Started
+
+### 1. Clone the Repository
+
+```bash
+git clone https://github.com/yourusername/fluently.git
+cd fluently
+```
+
+### 2. Install Dependencies
+
+```bash
+npm install
+# or
+pnpm install
+```
+
+### 3. Set Up Environment Variables
+
+Create a `.env` file in the root directory:
+
+```env
+# Neon DB
+DATABASE_URL=your_neon_database_url
+
+# Clerk
+CLERK_PUBLISHABLE_KEY=your_clerk_publishable_key
+CLERK_SECRET_KEY=your_clerk_secret_key
+NEXT_PUBLIC_CLERK_FRONTEND_API=your_clerk_frontend_api
+NEXT_PUBLIC_CLERK_SIGN_IN_URL=/sign-in
+NEXT_PUBLIC_CLERK_SIGN_UP_URL=/sign-up
+
+# Stripe
+STRIPE_SECRET_KEY=your_stripe_secret_key
+NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=your_stripe_publishable_key
+STRIPE_WEBHOOK_SECRET=your_stripe_webhook_secret
+
+# App URL
+NEXT_PUBLIC_APP_URL=http://localhost:3000
+```
+
+### 4. Run Database Migrations
+
+```bash
+npx drizzle-kit push
+```
+
+### 5. Start the Dev Server
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Go to `http://localhost:3000` to explore Fluently!
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 📁 Project Structure
 
-## Learn More
+```
+fluently/
+├── app/               # Next.js App Router: routes, layouts, server actions
+├── components/        # Reusable UI components
+├── db/                # Drizzle schema and config
+├── lib/               # Utility functions and helpers
+├── middleware.ts      # Clerk middleware integration
+├── public/            # Static assets
+├── styles/            # Tailwind & global styles
+├── types/             # Shared TypeScript types
+└── env.mjs            # Environment loader
+```
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 💳 Stripe Integration
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- Checkout flow for premium subscriptions
+- Billing portal access for users
+- Webhooks to manage subscription status
+- Role-based access: Free vs Premium
 
-## Deploy on Vercel
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 🔐 Authentication with Clerk
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- Sign-up and sign-in pages
+- Session handling via Clerk SSR
+- Role stored in user metadata
+- Middleware integration (`middleware.ts`)
+
+---
+
+## 🧪 Testing (Planned)
+
+- ✅ Unit tests with [Vitest](https://vitest.dev/)
+- 🔄 Integration tests with [Playwright](https://playwright.dev/)
+- 🚀 CI/CD via GitHub Actions
+
+---
+
+## 📦 Deployment
+
+Recommended platforms:
+
+- **Vercel** — Hosting and frontend
+- **Neon** — Serverless Postgres DB
+- **Clerk** — Authentication and user management
+
+Set all environment variables in the Vercel dashboard before going live.
+
+---
+
+## 🤝 Contributing
+
+Contributions are welcome!
+
+```bash
+git checkout -b feature/your-feature
+git commit -m "feat: added new feature"
+git push origin feature/your-feature
+```
+
+Then open a pull request 🚀
+
+---
+
+## 📜 License
+
+Licensed under the [MIT License](LICENSE).
+
+---
+
+## 🙌 Acknowledgements
+
+- Inspired by [Duolingo](https://duolingo.com)
+- Built with ❤️ using Next.js, Drizzle, Clerk, Neon, and Stripe
+- Special thanks to **Code with Antonio**
+
+---
+
+## 👨‍💻 Author
+
+**Harsh Sharma**  
+[GitHub](https://github.com/HarshSharma07k) | [LinkedIn](https://www.linkedin.com/in/harsh-sharma-034433257)
