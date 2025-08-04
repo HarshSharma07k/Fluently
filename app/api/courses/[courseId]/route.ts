@@ -5,9 +5,9 @@ import { eq } from "drizzle-orm"
 import { NextResponse } from "next/server"
 
 type RouterType = {
-    params: {
-        courseId: number
-    };
+  params: Promise<{
+    courseId: number;
+  }>;
 };
 
 export const GET = async (

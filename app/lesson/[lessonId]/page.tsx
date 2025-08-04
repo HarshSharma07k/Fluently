@@ -3,9 +3,9 @@ import { redirect } from "next/navigation";
 import { Quiz } from "../quiz";
 
 type Props = {
-  params: {
+  params: Promise<{
     lessonId: number;
-  };
+  }>;
 };
 
 const LessonIdPage = async ({ params }: Props) => {

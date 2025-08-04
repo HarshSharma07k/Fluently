@@ -1,7 +1,3 @@
-"use client";
-
-import { useState } from "react";
-import { useMount } from "react-use";
 import { Admin, Resource } from "react-admin";
 import simpleRestProvider from "ra-data-simple-rest";
 
@@ -28,13 +24,6 @@ import { ChallengeOptionEdit } from "./challengeOption/edit";
 const dataProvider = simpleRestProvider("/api");
 
 const App = () => {
-  const [mounted, setMounted] = useState(false);
-
-  useMount(() => {
-    setMounted(true);
-  });
-
-  if (!mounted) return null;
 
   return (
     <Admin dataProvider={dataProvider}>

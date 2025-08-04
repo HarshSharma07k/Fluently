@@ -1,6 +1,6 @@
 import { getIsAdmin } from "@/lib/admin";
-import App from "./app";
 import { redirect } from "next/navigation";
+import { AdminClient } from "./admin-client";
 
 const AdminPage = async () => {
   const isAdmin = await getIsAdmin();
@@ -10,7 +10,7 @@ const AdminPage = async () => {
   }
 
   return (
-    <App />
+    <AdminClient />
   );
 };
 

@@ -10,7 +10,6 @@ export const ChallengeOptionList = () => {
                 <ReferenceField source="challengeId" reference="challenges"/>
                 <TextField source="imageSrc"/>
                 <TextField source="audioSrc"/>
-                <TextField source="order"/>
             </Datagrid>
         </List>
     );
