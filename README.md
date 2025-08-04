@@ -34,7 +34,7 @@
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/yourusername/fluently.git
+git clone https://github.com/HarshSharma07k/Fluently.git
 cd fluently
 ```
 
@@ -95,10 +95,7 @@ fluently/
 ├── db/                # Drizzle schema and config
 ├── lib/               # Utility functions and helpers
 ├── middleware.ts      # Clerk middleware integration
-├── public/            # Static assets
-├── styles/            # Tailwind & global styles
-├── types/             # Shared TypeScript types
-└── env.mjs            # Environment loader
+└── public/            # Static assets
 ```
 
 ---
