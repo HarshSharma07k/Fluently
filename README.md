@@ -128,7 +128,7 @@ fluently/
 
 ## 📦 Deployment
 
-This project is deployed on [Vercel](https://fluently-rho.vercel.app/).
+This project is deployed on [Vercel](https://fluently-iota.vercel.app/).
 
 ---
 
