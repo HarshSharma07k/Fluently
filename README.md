@@ -128,13 +128,7 @@ fluently/
 
 ## 📦 Deployment
 
-Recommended platforms:
-
-- **Vercel** — Hosting and frontend
-- **Neon** — Serverless Postgres DB
-- **Clerk** — Authentication and user management
-
-Set all environment variables in the Vercel dashboard before going live.
+This project is deployed on [Vercel](https://fluently-rho.vercel.app/).
 
 ---
 
