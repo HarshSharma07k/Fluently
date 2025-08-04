@@ -1,15 +1,23 @@
-import { auth } from "@clerk/nextjs/server"
+import { auth, clerkClient } from "@clerk/nextjs/server";
 
-const adminIds = [
-    "user_300yDSAZlw4BeRxAyEMxTZbyH6M"
+const adminEmails = [
+  "harshsharma29072003@gmail.com"
 ];
 
 export const getIsAdmin = async () => {
-    const { userId } = await auth();
+  const { userId } = await auth();
 
-    if (!userId) {
-        return false;
-    }
+  if (!userId) {
+    return false;
+  }
 
-    return adminIds.indexOf(userId) != -1;
-}
+  const user = await clerkClient.users.getUser(userId);
+
+  const email = user?.emailAddresses?.[0]?.emailAddress;
+
+  if (!email) {
+    return false;
+  }
+
+  return adminEmails.includes(email);
+};
